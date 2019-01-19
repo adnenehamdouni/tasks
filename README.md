@@ -23,4 +23,6 @@ Next for Angular project:
 - Configure Intellij to run angular project
 - Run angular from NPM Tool Window (from package.json) on Intellij
 - Take a tour on angular project (components, environnement, package.json...)
+- Create Tasks, Tasks-add and Tasks-list components : ng g c
+- Add bootstrap to angular npm i --save bootstrap
 
