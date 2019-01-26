@@ -90,3 +90,6 @@ ng g c tasks-list
 
 - Configure bootstrap to Angular project on angular.json
 
+
+ng generate class task --type=model
+
