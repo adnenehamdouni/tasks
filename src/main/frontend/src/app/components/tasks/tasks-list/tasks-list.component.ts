@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Task} from "../../../shared/model/task.model";
 
 @Component({
   selector: 'app-tasks-list',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TasksListComponent implements OnInit {
 
+  tasks: Task[] = [];
+
   constructor() { }
 
   ngOnInit() {
+    this.initTasks();
   }
 
+  private initTasks() {
+    console.log('TasksListComponent: initTasks here');
+    this.tasks.push(new Task(1, "Task 1", true, "26/01/2019"));
+    this.tasks.push(new Task(2, "Task 2", false, "26/01/2019"));
+    this.tasks.push(new Task(3, "Task 3", false, "26/01/2019"));
+  }
 }
