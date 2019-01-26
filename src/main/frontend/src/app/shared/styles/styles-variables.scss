@@ -1,35 +1,17 @@
-#main p {
-  color: #00ff00;
-  width: 97%;
-
-  .redbox {
-    background-color: #ff0000;
-    color: #000000;
-  }
+:root {
+  --main-color: #ff6f69;
+  --main-font-size: 16px;
 }
 
-a {
-  font-weight: bold;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
-  body.firefox & {
-    font-weight: normal;
-  }
+#title {
+  color: var(--main-color);
 }
 
-#main {
-  color: black;
-  &-sidebar {
-    border: 1px solid;
-  }
+.alert {
+  --alert-color: #ff6f69;
 }
 
-.funky {
-  font: {
-    family: fantasy;
-    size: 30em;
-    weight: bold;
-  }
+.alert p {
+  color: var(--alert-color);
+  border: 1px solid var(--alert-color);
 }

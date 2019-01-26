@@ -1,5 +1,19 @@
 @import "../../shared/styles/styles-variables.scss";
 
+#tasksPanel {
+  margin-top: 30px;
+  .panel-heading {
+    h3 {
+      text-align: center;
+      color: #03aa98;
+      background-color: bisque;
+    }
+    .panel-title {
+      font-size: 3em;
+    }
+  }
+}
+
 .main-tasks {
   background-color: #03aa98;
   p {
@@ -20,4 +34,8 @@
     background-color: #ff0000;
     color: #000000;
   }
+}
+
+h2 {
+  color: royalblue;
 }
