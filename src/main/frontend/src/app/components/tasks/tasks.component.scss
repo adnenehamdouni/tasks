@@ -1,0 +1,23 @@
+@import "../../shared/styles/styles-variables.scss";
+
+.main-tasks {
+  background-color: #03aa98;
+  p {
+    color: #00ff00;
+    width: 97%;
+  }
+
+  .redbox {
+    background-color: #ff0000;
+    color: #000000;
+  }
+}
+
+#tasksListPanel {
+  background-color: yellow;
+
+  .redbox {
+    background-color: #ff0000;
+    color: #000000;
+  }
+}
