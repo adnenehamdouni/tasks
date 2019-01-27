@@ -97,3 +97,7 @@ ng generate interface config
 
 ng g enum my-new-enum
 
+
+- AddTask service method
+using postman 
+

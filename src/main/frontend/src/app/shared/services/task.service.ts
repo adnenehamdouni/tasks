@@ -2,21 +2,33 @@ import { Injectable, Inject } from "@angular/core";
 import {
   HttpClient,
   HttpResponse,
-  HttpErrorResponse
+  HttpErrorResponse,
+  HttpHeaders
 } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { catchError, retry } from "rxjs/operators";
 import { Task } from "../model/task.model";
-import {environment} from "../../../environments/environment";
-import {APP_CONFIG, AppConfig} from "../../../environments/app-config/app-config.module";
+import { environment } from "../../../environments/environment";
+import {
+  APP_CONFIG,
+  AppConfig
+} from "../../../environments/app-config/app-config.module";
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    "Content-Type": "application/json",
+    Authorization: "my-auth-token"
+  })
+};
 
 @Injectable({
   providedIn: "root"
 })
 export class TaskService {
-  constructor(private http: HttpClient,
-              @Inject(APP_CONFIG) private config: AppConfig) {}
-
+  constructor(
+    private http: HttpClient,
+    @Inject(APP_CONFIG) private config: AppConfig
+  ) {}
 
   getTasks(): Observable<HttpResponse<Array<Task>>> {
     return this.http
@@ -27,15 +39,23 @@ export class TaskService {
       );
   }
 
-
-  saveTask() {
-
+  /** POST: add a new task to the database */
+  saveTask(task: Task): Observable<Task> {
+    console.log(
+      "TaskService: saveTask => TASKS_ADD  = ",
+      this.config.TASKS_ADD
+    );
+    return this.http
+      .post<Task>(`${this.config.TASKS_ADD}`, task, httpOptions)
+      .pipe(
+        //catchError(this.handleError('addTask', task))
+        catchError(this.handleError)
+      );
   }
 
-
   /*
-  *
-  *
+   *
+   *
    */
 
   private handleError(error: HttpErrorResponse) {
@@ -54,8 +74,8 @@ export class TaskService {
   }
 
   /*
-  *
-  *
+   *
+   *
    */
 
   getHostURL(): string {

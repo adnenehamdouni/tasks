@@ -52,7 +52,19 @@ export class TasksListComponent implements OnInit {
   }
 
   onTaskChange(event: any, task: Task) {
-    //
+    if (event.target.checked) {
+      console.log("TasksListComponent: onTaskChange => checked");
+    } else {
+      console.log("TasksListComponent: onTaskChange => NOT checked");
+    }
+    task.completed = event.target.checked;
+
+    this.taskService.saveTask(task).subscribe(task =>
+      //this.tasks.push(task)
+      console.log(
+        "TasksListComponent: saveTask response => " + JSON.stringify(task)
+      )
+    );
   }
 
   getDueDateLabel(task: Task) {
