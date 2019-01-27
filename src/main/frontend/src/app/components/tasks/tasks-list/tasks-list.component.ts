@@ -30,7 +30,7 @@ export class TasksListComponent implements OnInit {
 
   getTasksResponse() {
     this.taskService
-      .getTasksResponse()
+      .getTasks()
       // resp is of type `HttpResponse<Config>`
       .subscribe(resp => {
         // display its headers

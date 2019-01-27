@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import {
   HttpClient,
   HttpResponse,
@@ -6,31 +6,37 @@ import {
 } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { catchError, retry } from "rxjs/operators";
-import { Config } from "src/app/shared/interfaces/config";
 import { Task } from "../model/task.model";
+import {environment} from "../../../environments/environment";
+import {APP_CONFIG, AppConfig} from "../../../environments/app-config/app-config.module";
 
 @Injectable({
   providedIn: "root"
 })
 export class TaskService {
-  //tasksUrl = "assets/config.json";
+  constructor(private http: HttpClient,
+              @Inject(APP_CONFIG) private config: AppConfig) {}
 
-  baseUrl: string = "http://localhost:4200/api/tasks";
 
-  constructor(private http: HttpClient) {}
-
-  /*getTasks() {
-    return this.http.get<Config>(this.tasksUrl);
-  }*/
-
-  getTasksResponse(): Observable<HttpResponse<Array<Task>>> {
+  getTasks(): Observable<HttpResponse<Array<Task>>> {
     return this.http
-      .get<Array<Task>>(this.baseUrl, { observe: "response" })
+      .get<Array<Task>>(`${this.config.baseUrl}/tasks`, { observe: "response" })
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
       );
   }
+
+
+  saveTask() {
+
+  }
+
+
+  /*
+  *
+  *
+   */
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -45,5 +51,14 @@ export class TaskService {
     }
     // return an observable with a user-facing error message
     return throwError("Something bad happened; please try again later.");
+  }
+
+  /*
+  *
+  *
+   */
+
+  getHostURL(): string {
+    return environment.apiEndpoint;
   }
 }

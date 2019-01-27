@@ -9,6 +9,7 @@ import { TasksComponent } from "./components/tasks/tasks.component";
 import { TasksAddComponent } from "./components/tasks/tasks-add/tasks-add.component";
 import { TasksListComponent } from "./components/tasks/tasks-list/tasks-list.component";
 import { TaskService } from "./shared/services/task.service";
+import {AppConfigModule} from "../environments/app-config/app-config.module";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TaskService } from "./shared/services/task.service";
     // import HttpClientModule after BrowserModule.
     HttpClientModule,
     AppRoutingModule,
-    UiModule
+    UiModule,
+    AppConfigModule
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]

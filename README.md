@@ -95,3 +95,5 @@ ng generate class task --type=model
 ng generate service task
 ng generate interface config
 
+ng g enum my-new-enum
+
