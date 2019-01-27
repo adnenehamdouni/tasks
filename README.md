@@ -101,3 +101,21 @@ ng g enum my-new-enum
 - AddTask service method
 using postman 
 
+- deploy
+
+npm install --save-dev rimraf
+npm install --save-dev mkdirp
+npm install --save-dev copyfiles
+
+add to package.json :
+
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve --proxy-config=proxy.conf.json",
+    "build": "ng build",
+    "postbuild": "ng run deploy",
+    "predeploy": "rimraf ../resources/static/ &&  mkdirp ../resources/static",
+    "deploy": "copyfiles -f dist/** ../resources/static",
+
+npm run build
+
