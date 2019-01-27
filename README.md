@@ -43,6 +43,8 @@ to verify you are on the right version, run ng --version
 
 2. Bootstrapping
 
+https://getbootstrap.com
+
 found 14 vulnerabilities (9 low, 5 high)
   run `npm audit fix` to fix them, or `npm audit` for details
 Adnenes-MBP:tutorial-angular-cli-v6-styling-bootstrap adnenehamdouni$ npm audit fix
@@ -87,4 +89,9 @@ ng g c tasks-list
 
 
 - Configure bootstrap to Angular project on angular.json
+
+
+ng generate class task --type=model
+ng generate service task
+ng generate interface config
 

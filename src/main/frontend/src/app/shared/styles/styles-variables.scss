@@ -1,0 +1,17 @@
+:root {
+  --main-color: #ff6f69;
+  --main-font-size: 16px;
+}
+
+#title {
+  color: var(--main-color);
+}
+
+.alert {
+  --alert-color: #ff6f69;
+}
+
+.alert p {
+  color: var(--alert-color);
+  border: 1px solid var(--alert-color);
+}
