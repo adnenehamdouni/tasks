@@ -92,4 +92,6 @@ ng g c tasks-list
 
 
 ng generate class task --type=model
+ng generate service task
+ng generate interface config
 
