@@ -8,7 +8,7 @@
         [checked]="task.completed"
       />
       <span ngClass="{{ task.completed ? 'name completed' : 'name' }}">{{
-        task.completed
+        task.name
       }}</span>
       <span class="label {{ getDueDateLabel(task) }} pull-right">{{
         task.dueDate

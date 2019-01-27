@@ -1,4 +1,4 @@
-import { Injectable, Inject } from "@angular/core";
+import { Injectable, Inject, EventEmitter } from "@angular/core";
 import {
   HttpClient,
   HttpResponse,
@@ -25,6 +25,9 @@ const httpOptions = {
   providedIn: "root"
 })
 export class TaskService {
+  //listen event if we emit change in inupt to add new Task
+  onTaskAdded = new EventEmitter<Task>();
+
   constructor(
     private http: HttpClient,
     @Inject(APP_CONFIG) private config: AppConfig

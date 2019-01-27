@@ -1,3 +1,9 @@
 <div class="form-group">
-  <input type="text" class="form-control" placeholder="Add New Nask" />
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Add New Nask"
+    (keyup.enter)="onTaskAdd($event)"
+    ([ngModel])="(addTaskValue)"
+  />
 </div>

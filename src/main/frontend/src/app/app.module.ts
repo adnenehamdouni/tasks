@@ -9,7 +9,7 @@ import { TasksComponent } from "./components/tasks/tasks.component";
 import { TasksAddComponent } from "./components/tasks/tasks-add/tasks-add.component";
 import { TasksListComponent } from "./components/tasks/tasks-list/tasks-list.component";
 import { TaskService } from "./shared/services/task.service";
-import {AppConfigModule} from "../environments/app-config/app-config.module";
+import { AppConfigModule } from "src/environments/app-config/app-config.module";
 
 @NgModule({
   declarations: [

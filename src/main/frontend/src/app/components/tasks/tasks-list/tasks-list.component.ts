@@ -19,13 +19,20 @@ export class TasksListComponent implements OnInit {
   ngOnInit() {
     //this.initTasks();
     this.getTasksResponse();
+
+    this.taskService.onTaskAdded.subscribe((task: Task) => {
+      console.log(
+        "TasksListComponent: ngOnInit => event is emitted by adding new task, update list with new task "
+      );
+      this.tasks.push(task);
+    });
   }
 
   private initTasks() {
     console.log("TasksListComponent: initTasks here");
-    this.tasks.push(new Task(1, "Task 1", true, "26/01/2019"));
+    /*this.tasks.push(new Task(1, "Task 1", true, "26/01/2019"));
     this.tasks.push(new Task(2, "Task 2", false, "26/01/2019"));
-    this.tasks.push(new Task(3, "Task 3", false, "26/01/2019"));
+    this.tasks.push(new Task(3, "Task 3", false, "26/01/2019"));*/
   }
 
   getTasksResponse() {
@@ -34,7 +41,6 @@ export class TasksListComponent implements OnInit {
       // resp is of type `HttpResponse<Config>`
       .subscribe(resp => {
         // display its headers
-
         const keys = resp.headers.keys();
         this.headers = keys.map(key => `${key}: ${resp.headers.get(key)}`);
 
